@@ -1,0 +1,13 @@
+body {
+    width: 70%;
+    margin: auto;
+    padding: 1em;
+}
+
+@media (orientation: portrait) {
+    body { width: 100%; }
+}
+
+.entry {
+    display: block;
+}
