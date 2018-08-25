@@ -1,7 +1,13 @@
+@font-face {
+    /* License for this found is at: /SourceSansPro-License.txt */
+    font-family: "Source Sans Pro";
+    src: url("SourceSansPro-Regular.ttf");
+}
+
 body {
-    width: 70%;
-    margin: auto;
-    padding: 1em;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    background-color: #eee;
 }
 
 @media (orientation: portrait) {
@@ -10,4 +16,93 @@ body {
 
 .entry {
     display: block;
+}
+
+header {
+    padding: auto;
+    padding-top: 3%;
+    padding-bottom: 1em;
+    background-color: #ffb209;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+header div {
+    width: 70vw;
+    margin: auto;
+    color: #fff;
+}
+
+header div h1 {
+}
+
+.buttons {
+}
+
+button {
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    border: 0;
+    padding: 0.5em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    margin-right: 1em;
+    background-color: #ffb209;
+    color: #fff;
+}
+
+.buttons button {
+    background-color: #fdfdfd;
+    color: #aa7209;
+}
+
+button:hover {
+    background-color: #ffad05;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.buttons button:hover {
+    background-color: #fff;
+}
+
+article {
+    padding-top: 2em;
+}
+
+article table {
+    padding: 2.5vw;
+    padding-top: 0;
+}
+
+footer {
+    padding: 2.5vw;
+    padding-top: 2em;
+}
+
+.content {
+    width: 75vw;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+thead {
+    display: none;
+}
+
+tr {
+    height: 2em;
+}
+
+td.field-title {
+    width: 7em;
+    padding-right: 1em;
+}
+td.field-value {
+    width: 25vw;
+}
+
+td input {
+    font-family: "Source Sans Pro", sans-serif;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    width: 97%;
 }

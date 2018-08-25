@@ -9,61 +9,45 @@
   </head>
   <body>
     <header>
-      <h2>Metadata Manager</h2>
+      <div>
+        <h1>Metadata Manager</h1>
+        <div class="buttons">
+          <button type="submit" form="export-form" formaction="/export">Export</button>
+          <button type="submit" formaction="/">Import</button>
+        </div>
+      </div>
     </header>
-    <article>
-      <form>
+    <div class="content">
+      <article>
         <table>
-          <tr>
-            <td><label for="title" title="Name of the dataset or research project that produced it">Title:</label></td>
-            <td><input type="text" name="Title" id="title"></td>
-          </tr>
-          <tr>
-            <td><label for="creator" title="Names and addresses of the organization or people who created the data">Creator:</label></td>
-            <td><input type="text" name="Creator" id="creator"></td>
-          </tr>
-          <tr>
-            <td><label for="identifier" title="Number used to identify the data, even if it is just an internal project reference number">Identifier:</label></td>
-            <td><input type="text" name="Id<entifier" id="identifier"></td>
-          </tr>
-          <tr>
-            <td><label for="dates" title="Key dates associated with the data, including project start and end date, data modification data release date, and time period covered by the data">Dates:</label></td>
-            <td><input type="text" name="Dates" id="dates"></td>
-          </tr>
-          <tr>
-            <td><label for="subject" title="Keywords or phrases describing the subject or content of the data">Subject:</label></td>
-            <td><input type="text" name="Subject" id="subject"></td>
-          </tr>
-          <tr>
-            <td><label for="funders" title="Organizations or agencies who funded the research">Funders:</label></td>
-            <td><input type="text" name="Funders" id="funders"></td>
-          </tr>
-          <tr>
-            <td><label for="rights" title="Any known intellectual property rights held for the data">Rights:</label></td>
-            <td><input type="text" name="Rights" id="rights"></td>
-          </tr>
-          <tr>
-            <td><label for="language" title="Language(s) of the intellectual content of the resource, when applicable">Language:</label></td>
-            <td><input type="text" name="Language" id="language"></td>
-          </tr>
-          <tr>
-            <td><label for="location" title="Where the data relates to a physical location, record information about its spatial coverage">Location: </label></td>
-            <td><input type="text" name="Location" id="location"></td>
-          </tr>
-          <tr>
-            <td><label for="methodology" title="How the data was generated, including equipment or software used, experimental protocol, other things you might include in a lab notebook">Methodology:</label>
-            <td><input type="text" name="Methodology" id="methodology"></td>
-          </tr>
-          <!-- CUSTOM LABELS -->
+          <thead>
+            <td>Metadata Name</td>
+            <td>Metadata Value</td>
+          </thead>
+          <tbody>
+            <form id="export-form" method="post">
+              <!--FIELD TEMPLATE
+                  <tr>
+                    <td class="field-title"><label for="TITLE" title="">TITLE:</label>
+                    <td colspan="2" class="field-value"><input type="text" name="TITLE" id="TITLE" value="VALUE"></td>
+                  </tr>
+                  FIELD TEMPLATE-->
+              <!-- CUSTOM FIELDS -->
+              <tr>
+                <td class="field-title"><input type="text" name="AddedFieldName" id="added-field-name"></td>
+                <td class="field-value"><input type="text" name="AddedFieldValue" id="added-field-value"></td>
+                <td><button type="submit" form="export-form" formaction="/">Add field</button></td>
+              </tr>
+            </form>
+          </tbody>
         </table>
-        <button type="submit">Export</button>
-      </form>
-    </article>
-    <footer>
-      <small>
-        <p>Metadata Manager is a tool for writing down metadata. It features importing and exporting, as well as adding custom fields. Find the source code in the <a href="https://git.neon.moe/neon/metadata-manager">project's Git repository</a>.</p>
-        <p>The default metadata fields are based on the guidelines in the <a href="https://libraryguides.helsinki.fi/rdm/data-description">University of Helsinki's research guides</a>, which are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
-      </small>
-    </footer>
+      </article>
+      <footer>
+        <small>
+          <p>Metadata Manager is a tool for writing down metadata. It features importing and exporting, as well as adding custom fields. Find the source code in the <a href="https://git.neon.moe/neon/metadata-manager">project's Git repository</a>.</p>
+          <p>The default metadata fields are based on the guidelines in the <a href="https://libraryguides.helsinki.fi/rdm/data-description">University of Helsinki's research guides</a>, which are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+        </small>
+      </footer>
+    </div>
   </body>
 </html>
