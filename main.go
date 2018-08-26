@@ -65,13 +65,32 @@ func (s *Server) HandleRequest(ctx *fasthttp.RequestCtx) {
 	case "/":
 		ctx.SetStatusCode(fasthttp.StatusOK)
 		ctx.SetContentType("text/html")
+		var returnDefaultPage = true
+
+		// Handle imported files (return a page with the imported data set)
+		var importFile, fileErr = ctx.FormFile("import-file")
+		if fileErr == nil {
+			var file, err = importFile.Open()
+			if err == nil {
+				var formRecord = createRecordFromCsv(file)
+				if len(formRecord) > 0 {
+					writeIndexHtml(ctx, s.indexHtmlParts, s.templateField, formRecord)
+					returnDefaultPage = false
+				}
+			}
+		}
+
+		// Handle new fields being added (return a page with the new field)
 		var queryString = ctx.PostArgs().QueryString()
-		if len(queryString) > 0 {
+		if returnDefaultPage && len(queryString) > 0 {
 			var formRecord, newField = createRecordFromQueryString(string(ctx.PostArgs().QueryString()))
 			formRecord[0] = append(formRecord[0], newField[0])
 			formRecord[1] = append(formRecord[1], newField[1])
 			writeIndexHtml(ctx, s.indexHtmlParts, s.templateField, formRecord)
-		} else {
+			returnDefaultPage = false
+		}
+
+		if returnDefaultPage {
 			ctx.Write(s.defaultIndexHtml)
 		}
 
@@ -126,6 +145,16 @@ func createRecordFromQueryString(queryString string) ([][]string, [2]string) {
 		}
 	}
 	return records, newField
+}
+
+func createRecordFromCsv(reader io.Reader) [][]string {
+	var csvReader = csv.NewReader(reader)
+	var records, err = csvReader.ReadAll()
+	if err != nil {
+		return make([][]string, 0)
+	} else {
+		return records
+	}
 }
 
 func tryToQueryUnescape(s string) string {

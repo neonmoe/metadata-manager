@@ -12,8 +12,14 @@
       <div>
         <h1>Metadata Manager</h1>
         <div class="buttons">
+          <form action="/" method="get">
+            <button type="submit">Reset</button>
+          </form>
           <button type="submit" form="export-form" formaction="/export">Export</button>
-          <button type="submit" formaction="/">Import</button>
+          <form action="/" method="post" enctype="multipart/form-data">
+            <button type="submit">Import</button>
+            <input type="file" id="import-file" name="import-file" accept=".csv">
+          </form>
         </div>
       </div>
     </header>
@@ -21,14 +27,16 @@
       <article>
         <table>
           <thead>
-            <td>Metadata Name</td>
-            <td>Metadata Value</td>
+            <tr>
+              <td>Metadata Name</td>
+              <td>Metadata Value</td>
+            </tr>
           </thead>
           <tbody>
             <form id="export-form" method="post">
               <!--FIELD TEMPLATE
                   <tr>
-                    <td class="field-title"><label for="TITLE" title="">TITLE:</label>
+                    <td class="field-title"><label for="TITLE">TITLE:</label>
                     <td colspan="2" class="field-value"><input type="text" name="TITLE" id="TITLE" value="VALUE"></td>
                   </tr>
                   FIELD TEMPLATE-->
