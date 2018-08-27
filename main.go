@@ -96,7 +96,14 @@ func (s *Server) HandleRequest(ctx *fasthttp.RequestCtx) {
 
 	case "/export":
 		var formRecord, _ = createRecordFromQueryString(string(ctx.PostArgs().QueryString()))
-		ctx.Response.Header.Set("Content-Disposition", "attachment; filename=\"metadata.csv\"")
+		var id = getValueFromRecord(formRecord, "Identifier")
+		var name string
+		if len(id) > 0 {
+			name = fmt.Sprintf("attachment; filename=\"%s-metadata.csv\"", id)
+		} else {
+			name = "attachment; filename=\"metadata.csv\""
+		}
+		ctx.Response.Header.Set("Content-Disposition", name)
 		var csvWriter = csv.NewWriter(ctx)
 		csvWriter.WriteAll(formRecord)
 	default:
@@ -155,6 +162,15 @@ func createRecordFromCsv(reader io.Reader) [][]string {
 	} else {
 		return records
 	}
+}
+
+func getValueFromRecord(formRecord [][]string, key string) string {
+	for i, k := range formRecord[0] {
+		if k == key {
+			return formRecord[1][i]
+		}
+	}
+	return ""
 }
 
 func tryToQueryUnescape(s string) string {
