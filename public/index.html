@@ -35,8 +35,8 @@
           <tbody>
             <form id="export-form" method="post">
               <!--FIELD TEMPLATE
-                  <tr>
-                    <td class="field-title"><label for="TITLE">TITLE:</label>
+                  <tr class="field-row">
+                    <td class="field-title"><label for="TITLE">TITLE:</label></td>
                     <td colspan="2" class="field-value"><input type="text" name="TITLE" id="TITLE" value="VALUE"></td>
                   </tr>
                   FIELD TEMPLATE-->
@@ -44,7 +44,7 @@
               <tr>
                 <td class="field-title"><input type="text" name="AddedFieldName" id="added-field-name"></td>
                 <td class="field-value"><input type="text" name="AddedFieldValue" id="added-field-value"></td>
-                <td><button type="submit" form="export-form" formaction="/">Add field</button></td>
+                <td colspan="2"><button type="submit" form="export-form" formaction="/">Add field</button></td>
               </tr>
             </form>
           </tbody>
@@ -57,5 +57,6 @@
         </small>
       </footer>
     </div>
+    <script type="application/javascript" src="minor-enhancements.js"></script>
   </body>
 </html>

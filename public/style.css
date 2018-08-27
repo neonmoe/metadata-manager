@@ -46,6 +46,13 @@ button {
     color: #fff;
 }
 
+.field-row button, .field-row button:hover {
+    background-color: rgba(0,0,0,0);
+    color: #555;
+    box-shadow: none;
+    font-size: 0.7em;
+}
+
 .buttons form {
     display: inline;
 }
@@ -108,7 +115,7 @@ td.field-value {
 
 td input {
     font-family: "Source Sans Pro", sans-serif;
-    border: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     width: 97%;
 }
