@@ -105,6 +105,7 @@ func (s *Server) HandleRequest(ctx *fasthttp.RequestCtx) {
 		}
 		ctx.Response.Header.Set("Content-Disposition", name)
 		var csvWriter = csv.NewWriter(ctx)
+		csvWriter.Comma = '\t'
 		csvWriter.WriteAll(formRecord)
 	default:
 		s.fsHandler(ctx)
